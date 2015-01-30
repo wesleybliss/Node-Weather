@@ -1,0 +1,13 @@
+{
+  "name": "node-weather.app",
+  "version": "0.0.1",
+  "main": "app.js",
+  "description": "atom-shell app from scratch",
+  "repository": {
+    "url": "NA"
+  },
+  "dependencies": {
+    "gulp": "^3.8.10",
+    "gulp-shell": "^0.2.11"
+  }
+}

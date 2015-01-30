@@ -1,0 +1,25 @@
+{
+  "name": "node-weather.app",
+  "version": "0.0.1",
+  "description": "atom-shell app from scratch",
+  "repository": {
+    "url": "NA"
+  },
+  "dependencies": {
+    "axis": "^0.3.0",
+    "gulp": "^3.6.2",
+    "gulp-atom": "0.0.2",
+    "gulp-atom-shell": "^0.1.2",
+    "gulp-shell": "^0.2.11"
+  },
+  "devDependencies": {
+    "gulp-changed": "^1.1.1",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.4.3",
+    "gulp-copy": "0.0.2",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-htmlmin": "^1.0.0",
+    "gulp-stylus": "^2.0.0",
+    "gulp-uglify": "^1.1.0"
+  }
+}

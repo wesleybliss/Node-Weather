@@ -2,8 +2,16 @@
 /**
  * General info:
  * 
+ * Atom docs
+ * https://github.com/atom/atom-shell/tree/master/docs
+ * 
+ * General Gulp intro
+ * http://www.benfarrell.com/2014/07/05/a-polymer-gulp-atom-shell-workflow/
+ * https://speakerdeck.com/bermonpainter/front-end-workflows-with-gulp
+ * 
  * Gulp/Node/Stylus examples
  * https://www.npmjs.com/package/gulp-stylus
+ * http://www.simiansblog.com/simian-s-blog/flirting-with-gulp-part-ii
  * 
  */
 
@@ -41,7 +49,7 @@ gulp.task( 'stylus', function stylysInit() {
         .pipe(
             stylus({
                 use: axis(),
-                compress: true
+                compress: false
             })
         )
         .pipe( gulp.dest( 'src/client/css/') );

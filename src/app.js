@@ -32,3 +32,8 @@ app.on('ready', function() {
     });
 });
 
+
+require('ipc').on('asynchronous-message', function( event, arg ) {
+    console.log( arg );
+    event.sender.send( 'asynchronous-reply', arg + 'bar' );
+});

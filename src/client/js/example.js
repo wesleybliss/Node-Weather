@@ -7,10 +7,16 @@ window.onload = function() {
     button.onclick = function(e) {
         
         var ipc = require('ipc');
+        
         ipc.on( 'asynchronous-reply', function( arg ) {
-            alert( arg );
+            if ( arg.error ) {
+                alert( arg.error );
+                return false;
+            }
+            alert( arg.list[0].weather[0].description );
         });
-        ipc.send( 'asynchronous-message', 'foo' );
+        
+        ipc.send( 'asynchronous-message', 'get-forecast' );
         
         return false;
     };

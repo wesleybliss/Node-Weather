@@ -6,15 +6,33 @@
 </head>
 <body>
     
-    <h1>Hello World!</h1>
-    We are using node.js <script>document.write(process.version)</script>
-    and atom-shell <script>document.write(process.versions['atom-shell'])</script>.
+    <h1 class="no-top-margin">Node Weather</h1>
     
-    <div class="el">
-        <div id="get-forecast" class="button">Get Forecast</div>
+    <section id="no-location-error" class="hidden">
+        <div class="flash flash-error">
+            Not Cool
+            <br>
+            <small>Well, this won't do. I can't seem to get your location.</small>
+        </div>
+    </section>
+    
+    <section>
+        <div class="el">
+            <div id="get-forecast" class="button">Get Forecast</div>
+        </div>
+    </section>
+    
+    <section id="forecast-general"></section>
+    
+    <!-- Not yet sure how to capture the console output when running
+        in atom-shell, so for now, just log to the window. -->
+    <div id="debug-console">
+        <ol></ol>
     </div>
     
     <script type="text/javascript" src="js/example.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/madrobby/zepto/master/src/zepto.js"></script>
+    <script type="text/javascript">window.jQuery || document.write("<script src='js/vendor/zepto.js'>\x3C/script>")</script>
     
 </body>
 </html>

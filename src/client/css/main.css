@@ -252,6 +252,55 @@ td {
 }
 body {
   padding: 10px;
+  font-size: 13px;
+  font-size: 0.8rem;
+}
+.hidden {
+  display: none;
+}
+.no-top-margin {
+  margin-top: 0;
+}
+.flash-error {
+  background: #e88074;
+  background: #e67467 -webkit-linear-gradient(top, #e88074, #e67467) repeat-x;
+  background: #e67467 -moz-linear-gradient(top, #e88074, #e67467) repeat-x;
+  background: #e67467 -o-linear-gradient(top, #e88074, #e67467) repeat-x;
+  background: #e67467 -ms-linear-gradient(top, #e88074, #e67467) repeat-x;
+  background: #e67467 linear-gradient(to bottom, #e88074, #e67467) repeat-x;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid #e26153;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.05);
+  position: relative;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+}
+.flash-error:before,
+.flash-error:after {
+  content: "";
+  display: table;
+}
+.flash-error:after {
+  clear: both;
+}
+section {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+#debug-console {
+  width: 50%;
+  height: 200px;
+  background-color: #222;
+  opacity: 0.8;
+  font-family: Consolas;
+  font-size: 14px;
+  color: #fefefe;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
 }
 #get-forecast {
   font-size: 13px;

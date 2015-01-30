@@ -26,6 +26,8 @@ app.on('ready', function() {
 
     // and load the index.html of the app.
     mainWindow.loadUrl('file://' + __dirname + '/client/index.html');
+    
+    mainWindow.openDevTools();
 
     // Emitted when the window is closed.
     mainWindow.on('closed', function() {
@@ -37,15 +39,17 @@ app.on('ready', function() {
 });
 
 
+
+
+
 require('ipc').on( 'asynchronous-message', function( event, arg ) {
     
     console.log( arg );
     
-    switch ( arg ) {
+    switch ( arg.action ) {
         
         case 'get-forecast':
-            //event.sender.send( 'asynchronous-reply', arg + 'bar' );
-            nodeWeather.getForecast( 'New York', 'us', function( err, res ) {
+            nodeWeather.getForecastByLocation( arg.lat, arg.lng, function( err, res ) {
                 if ( err ) {
                     event.sender.send( 'asynchronous-reply', { error: err } );
                     return;

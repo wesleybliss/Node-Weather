@@ -16,12 +16,17 @@
         </div>
     </section>
     
+    <section id="status">
+        Ready. <small><i>(Click something.)</i></small>
+    </section>
+    
     <section>
         <div class="el">
             <div id="get-forecast" class="button">Get Forecast</div>
         </div>
     </section>
     
+    <section id="forecast-coords"></section>
     <section id="forecast-general"></section>
     
     <!-- Not yet sure how to capture the console output when running
@@ -31,8 +36,9 @@
     </div>
     
     <script type="text/javascript" src="js/example.js"></script>
-    <script type="text/javascript" src="https://cdn.rawgit.com/madrobby/zepto/master/src/zepto.js"></script>
-    <script type="text/javascript">window.jQuery || document.write("<script src='js/vendor/zepto.js'>\x3C/script>")</script>
+    
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.4/zepto.min.js"></script>
+    <script type="text/javascript">window.jQuery || document.write("<script src='js/vendor/zepto.min.js'>\x3C/script>")</script>
     
 </body>
 </html>

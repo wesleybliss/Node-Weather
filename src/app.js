@@ -12,6 +12,21 @@ var mainWindow = null;
 
 var nodeWeather = new NodeWeather();
 
+
+/**
+ * Workaround for logging to browser console.
+ * 
+ * @param {browser-window} win, target window to send console log message two.
+ * @param {String} msg, the message we are sending.
+ */
+console.send = function( msg ) {
+    mainWindow.webContents.send( 'send-console', msg );
+    // mainWindow.webContents.on( 'did-finish-load', function() {
+    //     mainWindow.webContents.send( 'send-console', msg );
+    // });
+};
+
+
 // Quit when all windows are closed.
 app.on('window-all-closed', function() {
     if (process.platform != 'darwin')
@@ -44,7 +59,7 @@ app.on('ready', function() {
 
 require('ipc').on( 'asynchronous-message', function( event, arg ) {
     
-    console.log( arg );
+    console.send( arg );
     
     switch ( arg.action ) {
         

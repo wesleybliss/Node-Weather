@@ -23,10 +23,12 @@ NodeWeather.prototype.getFileHTTP = function( url, next ) {
         });
         
         res.on( 'end', function() {
+            console.send( body );
             next( false, JSON.parse( body ) );
         });
         
     }).on( 'error', function( e ) {
+        console.send( e );
         next( e );
     });
 }
@@ -41,6 +43,7 @@ NodeWeather.prototype.getForecastByName = function( state, country, next ) {
     var url = 'http://api.openweathermap.org/data/2.5/forecast?q='
         + encodeURIComponent( state )
         + ',' + country + '&mode=json';
+        console.send(url);
     this.getFileHTTP( url, next );
 };
 
@@ -49,8 +52,9 @@ NodeWeather.prototype.getForecastByName = function( state, country, next ) {
  * @return {JSON}           Weather response.
  */
 NodeWeather.prototype.getForecastByLocation = function( lat, lng, next ) {
-    var url = 'http://api.openweathermap.org/data/2.5/forecast?q='
+    var url = 'http://api.openweathermap.org/data/2.5/weather?'
         + 'lat=' + lat + '&lon=' + lng + '&mode=json';
+    console.send(url);
     this.getFileHTTP( url, next );
 };
 

@@ -10,6 +10,11 @@ window.onload = function() {
     
     console.log('hi');
     
+    // Workaround for logging from app to client.
+    require('ipc').on( 'send-console', function( msg ) {
+        console.log( '[SERVER] ' + msg );
+    });
+    
     // Make sure the client supports geolocation
     // @todo Fallback with manual input box?
     if ( !navigator.geolocation ) {
@@ -18,18 +23,41 @@ window.onload = function() {
     }
     
     ipc.on( 'asynchronous-reply', function( arg ) {
+        
         if ( arg.error ) {
             alert( arg.error );
             return false;
         }
+        console.log(arg);
+        // Since the JSON format returned from city vs lat/lng
+        // search is different, check for either, or fail.
+        
+        var clat = arg.city ? arg.city.coord.lat :
+            ( arg.coord ? arg.coord.lat : null );
+        
+        var clng = arg.city ? arg.city.coord.lon :
+            ( arg.coord ? arg.coord.lon : null );
+        
+        var cname = arg.city ? arg.city.name :
+            ( arg.name ? arg.name : null );
+        
+        if ( [clat, clng, cname].indexOf( null ) > -1 ) {
+            $('#forecast-general').html(
+                'Error: could not find your location.'
+            );
+            return;
+        }
+        
         $('#forecast-coords').html(
-            '<b>Lat:</b> ' + arg.city.coord.lat + '<br/>' +
-            '<b>Lng:</b> ' + arg.city.coord.lon
+            '<b>Lat:</b> ' + clat + '<br/>' +
+            '<b>Lng:</b> ' + clng
         );
+        
         $('#forecast-general').html(
-            arg.list[0].weather[0].description +
-            ' in ' + arg.city.name
+            arg.weather[0].description +
+            ' in ' + cname
         );
+        
     });
     
     var button = document.querySelector('#get-forecast');
